@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Sistema_para_gestao_de_oficina">
+  <ClassDiagramComponents>
+    <Class name="Peca" package="Estoque" visibility="public" xPosition="211.0" yPosition="316.0">
+      <Fields>
+        <Field name="nome" type="String" visibility="private"/>
+        <Field name="preco" type="float" visibility="private"/>
+        <Field name="categoria" type="Categoria" visibility="private"/>
+        <Field name="fornecedores" type="ArrayList&lt;Fornecedor&gt;" visibility="private"/>
+        <Field name="produtos" type="ArrayList&lt;Produto&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="Peca" returnType="void" visibility="public">
+          <Argument type="String" name="nome"/>
+          <Argument type="float" name="preco"/>
+          <Argument type="Categoria" name="categoria"/>
+        </Method>
+        <Method name="getNome" returnType="String" visibility="public"/>
+        <Method name="acrescentarFornecedor" returnType="void" visibility="public">
+          <Argument type="Fornecedor" name="fonecedor"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>

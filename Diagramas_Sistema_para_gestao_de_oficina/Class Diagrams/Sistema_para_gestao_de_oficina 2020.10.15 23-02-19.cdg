@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Sistema_para_gestao_de_oficina">
+  <ClassDiagramComponents>
+    <Class name="Peca" package="Estoque" visibility="public" xPosition="39.0" yPosition="292.0">
+      <Fields>
+        <Field name="nome" type="String" visibility="private"/>
+        <Field name="preco" type="float" visibility="private"/>
+        <Field name="categoria" type="CategoriaPeca" visibility="private"/>
+        <Field name="fornecedores" type="HashSet&lt;Fornecedor&gt;" visibility="private"/>
+        <Field name="id" type="long" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="nome"/>
+          <Argument type="float" name="preco"/>
+          <Argument type="Categoria" name="categoria"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="acrescentarFornecedor" returnType="Fornecedor" visibility="public">
+          <Argument type="Fornecedor" name="fonecedor"/>
+        </Method>
+        <Method name="acrescentarFornecedor" returnType="Fornecedor" visibility="public">
+          <Argument type="Fornecedor" name="fornecedor"/>
+        </Method>
+        <Method name="deletarFornecedor" returnType="Fornecedor" visibility="public">
+          <Argument type="Fornecedor" name="fornecedor"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Enum name="CategoriaPeca" package="Estoque" visibility="public" xPosition="179.0" yPosition="617.0">
+      <Literals>
+        <Literal name="MOTOR(&quot;Motor&quot;)"/>
+        <Literal name="LAMPADA(&quot;Lâmpada&quot;)"/>
+        <Literal name="PAINEL(&quot;Painel&quot;)"/>
+        <Literal name="CARCACA(&quot;Carcaça&quot;)"/>
+        <Literal name="CABO(&quot;Cabo&quot;)"/>
+        <Literal name="FONTE(&quot;Fonte&quot;)"/>
+        <Literal name="PARAFUSO(&quot;Parafuso&quot;)"/>
+        <Literal name="TECLADO(&quot;Teclado&quot;)"/>
+        <Literal name="OUTROS(&quot;Outros&quot;)"/>
+      </Literals>
+    </Enum>
+    <Class name="Eletrodomestico" package="Estoque" visibility="public" xPosition="481.0" yPosition="311.0">
+      <Fields>
+        <Field name="nome" type="String" visibility="private"/>
+        <Field name="categoria" type="CategoriaEletro" visibility="private"/>
+        <Field name="fabricante" type="Fabricante" visibility="private"/>
+        <Field name="pecas" type="HashSet&lt;Peca&gt;" visibility="private"/>
+        <Field name="id" type="long" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="nome"/>
+          <Argument type="CategoriaEletro" name="categoria"/>
+          <Argument type="Fabricante" name="fabricante"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="acrescentarPeca" returnType="Peca" visibility="public">
+          <Argument type="Peca" name="peca"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Pessoa" package="Pessoa" visibility="public" isAbstract="true" xPosition="448.0" yPosition="678.0">
+      <Fields>
+        <Field name="nome" type="String" visibility="private"/>
+        <Field name="telefone" type="long" visibility="private"/>
+        <Field name="endereco" type="String" visibility="private"/>
+        <Field name="email" type="String" visibility="private"/>
+        <Field name="id" type="long" visibility="private"/>
+        <Field name="cpfOuCnpj" type="long" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="setAtributos" returnType="long" visibility="public">
+          <Argument type="String" name="nome"/>
+          <Argument type="long" name="telefone"/>
+          <Argument type="String" name="endereco"/>
+          <Argument type="String" name="email"/>
+          <Argument type="long" name="cpfOuCnpj"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Cliente" package="Pessoa" visibility="public" xPosition="337.0" yPosition="1203.0">
+      <Fields>
+        <Field name="IDS_DAS_FUNCS" type="long[]" visibility="public" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Administrador" package="Pessoa" visibility="public" xPosition="575.0" yPosition="1203.0">
+      <Fields>
+        <Field name="IDS_DAS_FUNCS" type="long[]" visibility="public" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="ClienteEFuncionario" package="Pessoa" visibility="public" isAbstract="true" xPosition="613.0" yPosition="972.0">
+      <Fields>
+        <Field name="senha" type="String" visibility="private"/>
+        <Field name="codigoDeAcesso" type="long" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="gerarCodigoDeAcesso" returnType="void" visibility="protected" isStatic="true"/>
+        <Method name="gerarSenha" returnType="void" visibility="protected" isStatic="true"/>
+      </Methods>
+    </Class>
+    <Class name="Tecnico" package="Pessoa" visibility="public" xPosition="808.0" yPosition="1203.0">
+      <Fields>
+        <Field name="IDS_DAS_FUNCS" type="long[]" visibility="public" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Fornecedor" package="Pessoa" visibility="public" xPosition="982.0" yPosition="972.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="PedidoDeConserto" package="" visibility="public" xPosition="789.0" yPosition="57.0">
+      <Fields>
+        <Field name="cliente" type="Cliente" visibility="private"/>
+        <Field name="eletro" type="Eletrodomestico" visibility="private"/>
+        <Field name="descricaoDoDefeito" type="String" visibility="private"/>
+        <Field name="pecasNecassarias" type="ArrayList&lt;Peca&gt;" visibility="private"/>
+        <Field name="tecnicoResponsavel" type="Tecnico" visibility="private"/>
+        <Field name="estimativaDeTempo" type="int" visibility="private"/>
+        <Field name="orcamento" type="float" visibility="private"/>
+        <Field name="id" type="long" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Enum name="CategoriaEletro" package="Estoque" visibility="public" xPosition="1074.0" yPosition="332.0">
+      <Literals>
+        <Literal name="GELADEIRA(&quot;Geladeira&quot;)"/>
+        <Literal name="MICROONDAS(&quot;Microondas&quot;)"/>
+        <Literal name="FOGAO(&quot;Fogao&quot;)"/>
+        <Literal name="LIQUIDIFICADOR(&quot;Liquidificador&quot;)"/>
+        <Literal name="MAQUINA_DE_LAVAR(&quot;Maquina de lavar roupa&quot;)"/>
+        <Literal name="SECADEIRA(&quot;Secadeira&quot;)"/>
+        <Literal name="LAVA_LOUCAS(&quot;Lava louças&quot;)"/>
+        <Literal name="TELEVIASAO(&quot;Televisao&quot;)"/>
+        <Literal name="FERRO(&quot;Ferro de passar roupa&quot;)"/>
+        <Literal name="CAFETEIRA(&quot;Cafeteira&quot;)"/>
+        <Literal name="BATEIDEIRA(&quot;Batedeira&quot;)"/>
+        <Literal name="GRILL(&quot;Grill&quot;)"/>
+        <Literal name="OUTROS(&quot;Outros&quot;)"/>
+      </Literals>
+    </Enum>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="Pessoa.Fornecedor" target="Pessoa.Pessoa"/>
+    <HasRelation name="Possui" source="Estoque.Eletrodomestico" target="Estoque.Peca" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <IsRelation name="is" source="Pessoa.ClienteEFuncionario" target="Pessoa.Pessoa"/>
+    <HasRelation name="Usa" source="Estoque.Eletrodomestico" target="Estoque.CategoriaEletro" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <IsRelation name="is" source="Pessoa.Administrador" target="Pessoa.ClienteEFuncionario"/>
+    <IsRelation name="is" source="Pessoa.Cliente" target="Pessoa.ClienteEFuncionario"/>
+    <HasRelation name="Usa" source="Estoque.Peca" target="Estoque.CategoriaPeca" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <IsRelation name="is" source="Pessoa.Tecnico" target="Pessoa.ClienteEFuncionario"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
