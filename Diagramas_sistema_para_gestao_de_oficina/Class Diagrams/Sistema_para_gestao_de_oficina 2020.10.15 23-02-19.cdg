@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Sistema_para_gestao_de_oficina">
+  <ClassDiagramComponents>
+    <Class name="Peca" package="Estoque" visibility="public" xPosition="2479.0" yPosition="352.0">
+      <Fields>
+        <Field name="nome" type="String" visibility="private"/>
+        <Field name="preco" type="float" visibility="private"/>
+        <Field name="categoria" type="CategoriaPeca" visibility="private"/>
+        <Field name="fornecedores" type="Set&lt;Fornecedor&gt;" visibility="private"/>
+        <Field name="ID" type="long" visibility="public" isFinal="true"/>
+        <Field name="CATEGORIAS" type="Categorias" visibility="public" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="nome"/>
+          <Argument type="float" name="preco"/>
+          <Argument type="Categoria" name="categoria"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="acrescentarFornecedor" returnType="Fornecedor" visibility="public">
+          <Argument type="Fornecedor" name="fonecedor"/>
+        </Method>
+        <Method name="deletarFornecedor" returnType="Fornecedor" visibility="public">
+          <Argument type="Fornecedor" name="fornecedor"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Eletrodomestico" package="Estoque" visibility="public" isStatic="true" xPosition="2952.0" yPosition="352.0">
+      <Fields>
+        <Field name="nome" type="String" visibility="private"/>
+        <Field name="categoria" type="String" visibility="private"/>
+        <Field name="fabricante" type="Fabricante" visibility="private"/>
+        <Field name="pecas" type="Set&lt;Peca&gt;" visibility="private"/>
+        <Field name="ID" type="long" visibility="public" isFinal="true"/>
+        <Field name="CATEGORIAS" type="Categorias" visibility="public" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="nome"/>
+          <Argument type="String" name="categoria"/>
+          <Argument type="Fabricante" name="fabricante"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="acrescentarPeca" returnType="Peca" visibility="public">
+          <Argument type="Peca" name="peca"/>
+        </Method>
+        <Method name="deletarPeca" returnType="Peca" visibility="public">
+          <Argument type="Peca" name="peca"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Pessoa" package="Pessoa" visibility="public" isAbstract="true" xPosition="1036.0" yPosition="777.0">
+      <Fields>
+        <Field name="nome" type="String" visibility="private"/>
+        <Field name="telefone" type="long" visibility="private"/>
+        <Field name="endereco" type="String" visibility="private"/>
+        <Field name="email" type="String" visibility="private"/>
+        <Field name="id" type="long" visibility="public" isFinal="true"/>
+        <Field name="cpfOuCnpj" type="long" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="nome"/>
+          <Argument type="long" name="telefone"/>
+          <Argument type="String" name="endereco"/>
+          <Argument type="String" name="email"/>
+          <Argument type="long" name="cpfOuCnpj"/>
+          <Argument type="long" name="id"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Cliente" package="Pessoa" visibility="public" xPosition="1048.0" yPosition="1689.0">
+      <Fields>
+        <Field name="IDS_DAS_FUNCS" type="long[]" visibility="private" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Administrador" package="Pessoa" visibility="public" xPosition="1048.0" yPosition="1543.0">
+      <Fields>
+        <Field name="IDS_DAS_FUNCS" type="long[]" visibility="private" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="ClienteEFuncionario" package="Pessoa" visibility="public" isAbstract="true" xPosition="1329.0" yPosition="1501.0">
+      <Fields>
+        <Field name="senha" type="String" visibility="private" isFinal="true"/>
+        <Field name="codigoDeAcesso" type="String" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="gerarCodigoDeAcesso" returnType="String" visibility="private" isStatic="true"/>
+        <Method name="gerarSenha" returnType="String" visibility="private" isStatic="true"/>
+        <Method name="getIDsDasFuncoes" returnType="long[]" visibility="public" isAbstract="true"/>
+      </Methods>
+    </Class>
+    <Class name="Tecnico" package="Pessoa" visibility="public" xPosition="1048.0" yPosition="1399.0">
+      <Fields>
+        <Field name="IDS_DAS_FUNCS" type="long[]" visibility="private" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Fornecedor" package="Pessoa" visibility="public" xPosition="1065.0" yPosition="1279.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="PedidoDeConserto" package="Pedido" visibility="public" xPosition="675.0" yPosition="48.0">
+      <Fields>
+        <Field name="cliente" type="Cliente" visibility="private"/>
+        <Field name="eletro" type="Eletrodomestico" visibility="private"/>
+        <Field name="descricaoDoDefeito" type="String" visibility="private"/>
+        <Field name="pecasNecassarias" type="HashMap&lt;Pecas&gt;" visibility="private"/>
+        <Field name="tecnicoResponsavel" type="Tecnico" visibility="private"/>
+        <Field name="estimativaDeTempo" type="int" visibility="private"/>
+        <Field name="orcamento" type="float" visibility="private"/>
+        <Field name="id" type="long" visibility="private"/>
+        <Field name="status" type="StatusPedido" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="DBManager" package="DAL" visibility="public" isStatic="true" isFinal="true" xPosition="1698.0" yPosition="814.0">
+      <Fields>
+        <Field name="DB_PATH" type="String" visibility="private" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="lerObjeto" returnType="long" visibility="public" isStatic="true">
+          <Argument type="long" name="id"/>
+        </Method>
+        <Method name="escreverObjeto" returnType="Object" visibility="public" isStatic="true">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="criarObjeto" returnType="Object" visibility="public" isStatic="true">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="gerarId" returnType="long" visibility="public" isStatic="true" isFinal="true"/>
+      </Methods>
+    </Class>
+    <Class name="Estoque" package="Estoque" visibility="public" xPosition="2389.0" yPosition="680.0">
+      <Fields>
+        <Field name="estoque" type="HashMap&lt;Peca&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="adicionarPeca" returnType="int" visibility="public">
+          <Argument type="Peca" name="peca"/>
+          <Argument type="int" name="quantidade"/>
+        </Method>
+        <Method name="retirarPeca" returnType="int" visibility="public">
+          <Argument type="Peca" name="peca"/>
+          <Argument type="int" name="quantidade"/>
+        </Method>
+        <Method name="buscarPecasPorAtributo" returnType="Object" visibility="public">
+          <Argument type="String" name="atributo"/>
+          <Argument type="Object" name="valor"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="TecnicoFactory" package="DAL" visibility="public" xPosition="781.0" yPosition="1399.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="criarPessoa" returnType="Pessoa" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="AdministradorFactory" package="DAL" visibility="public" xPosition="779.0" yPosition="1543.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="criarPessoa" returnType="Pessoa" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ClienteFactory" package="DAL" visibility="public" xPosition="784.0" yPosition="1689.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="criarPessoa" returnType="Pessoa" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="FornecedorFactory" package="DAL" visibility="public" xPosition="781.0" yPosition="1268.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="criarPessoa" returnType="Pessoa" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Fabricante" package="" visibility="public" xPosition="1065.0" yPosition="1138.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="FabricanteFactory" package="" visibility="public" xPosition="784.0" yPosition="1128.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="criarPessoa" returnType="Pessoa" visibility="public"/>
+      </Methods>
+    </Class>
+    <Interface name="IPessoaFactory" package="DAL" visibility="public" xPosition="459.0" yPosition="1452.0">
+      <Methods>
+        <Method name="criarPessoa" returnType="Pessoa" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Enum name="StatusPedido" package="Pedido" visibility="public" xPosition="63.0" yPosition="44.0">
+      <Literals>
+        <Literal name="PEDIDO_REGISTRADO(&quot;Pedido registrado&quot;)"/>
+        <Literal name="ORCADO_TECNICO(&quot;Pedido sendo orçado&quot;)"/>
+        <Literal name="AGUARDANDO_APROVACAO(&quot;Pedido aguardando Aprovação&quot;)"/>
+        <Literal name="REPROVADO(&quot;Orçamento reprovado&quot;)"/>
+        <Literal name="APROVADO(&quot;Orçamento aprovado&quot;)"/>
+        <Literal name="AGUARDANDO_PECAS(&quot;Aguardando chegada de peças&quot;)"/>
+        <Literal name="EM_MANUTENCAO (&quot;Em Manutenção&quot;)"/>
+        <Literal name="TESTE_FINAL(&quot;Realizando testes de manutenção&quot;)"/>
+        <Literal name="FINALIZADO(&quot;Manutenção Finalizada&quot;) "/>
+        <Literal name="RETIRADO(&quot;Produto retirado pelo cliente&quot;)"/>
+      </Literals>
+    </Enum>
+    <Class name="Categorias" package="Estoque" visibility="public" xPosition="2791.0" yPosition="680.0">
+      <Fields>
+        <Field name="categorias" type="Set&lt;String&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="acrescentarCategoria" returnType="boolean" visibility="public">
+          <Argument type="String" name="categoria"/>
+        </Method>
+        <Method name="deletarCategoria" returnType="boolean" visibility="public">
+          <Argument type="String" name="categoria"/>
+        </Method>
+        <Method name="categoriaExiste" returnType="boolean" visibility="public">
+          <Argument type="String" name="categoria"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="Usa" source="Pedido.PedidoDeConserto" target="Pedido.StatusPedido" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="DAL.ClienteFactory" target="DAL.IPessoaFactory"/>
+    <IsRelation name="is" source="Pessoa.Fornecedor" target="Pessoa.Pessoa"/>
+    <IsRelation name="is" source="Pessoa.Administrador" target="Pessoa.ClienteEFuncionario"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="DAL.AdministradorFactory" target="DAL.IPessoaFactory"/>
+    <UseRelation name="Cria" source="DAL.ClienteFactory" target="Pessoa.Cliente" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="DAL.FornecedorFactory" target="DAL.IPessoaFactory"/>
+    <HasRelation name="Possui" source="Estoque.Estoque" target="Estoque.Peca" type="Composition" sourceCardinality="0..1" targetCardinality="0..*" collectionType="List"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="FabricanteFactory" target="DAL.IPessoaFactory"/>
+    <IsRelation name="is" source="Pessoa.Tecnico" target="Pessoa.ClienteEFuncionario"/>
+    <UseRelation name="Cria" source="FabricanteFactory" target="Fabricante" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="Possui" source="Estoque.Eletrodomestico" target="Estoque.Peca" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <UseRelation name="Cria" source="DAL.FornecedorFactory" target="Pessoa.Fornecedor" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="Pessoa.ClienteEFuncionario" target="Pessoa.Pessoa"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="DAL.TecnicoFactory" target="DAL.IPessoaFactory"/>
+    <IsRelation name="is" source="Fabricante" target="Pessoa.Pessoa"/>
+    <HasRelation name="Usa" source="Estoque.Categorias" target="Estoque.Peca" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="Pessoa.Cliente" target="Pessoa.ClienteEFuncionario"/>
+    <UseRelation name="Cria" source="DAL.TecnicoFactory" target="Pessoa.Tecnico" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="Cria" source="DAL.AdministradorFactory" target="Pessoa.Administrador" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="Usa" source="Estoque.Categorias" target="Estoque.Eletrodomestico" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
